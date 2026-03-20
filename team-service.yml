@@ -18,6 +18,28 @@ spring:
     username: guest
     password: guest
 
+feign:
+  circuitbreaker:
+    enabled: true
+
+resilience4j:
+  circuitbreaker:
+    instances:
+      startup-service:
+        registerHealthIndicator: true
+        slidingWindowSize: 5
+        minimumNumberOfCalls: 3
+        permittedNumberOfCallsInHalfOpenState: 2
+        waitDurationInOpenState: 10s
+        failureRateThreshold: 50
+      user-service:
+        registerHealthIndicator: true
+        slidingWindowSize: 5
+        minimumNumberOfCalls: 3
+        permittedNumberOfCallsInHalfOpenState: 2
+        waitDurationInOpenState: 10s
+        failureRateThreshold: 50
+
 eureka:
   client:
     service-url:
@@ -37,6 +59,11 @@ rabbitmq:
     team-invite-sent: team.invite.sent.queue
   routing-key:
     team-invite-sent: team.invite.sent
+
+logging:
+  level:
+    com.capgemini.team: INFO
+    io.github.resilience4j: DEBUG
 
 springdoc:
   api-docs:

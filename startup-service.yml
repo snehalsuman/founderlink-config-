@@ -16,6 +16,11 @@ spring:
     port: 5672
     username: guest
     password: guest
+  data:
+    redis:
+      host: localhost
+      port: 6379
+      timeout: 2000ms
 
 eureka:
   client:
@@ -28,6 +33,11 @@ eureka:
 
 jwt:
   secret: 5367566B59703373367639792F423F4528482B4D6251655468576D5A71347437
+
+logging:
+  level:
+    com.capgemini.startup: INFO
+    org.springframework.cache: DEBUG
 
 springdoc:
   api-docs:

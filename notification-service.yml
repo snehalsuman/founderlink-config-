@@ -44,3 +44,6 @@ springdoc:
     path: /v3/api-docs
   swagger-ui:
     path: /swagger-ui.html
+logging:
+  level:
+    com.capgemini.notification: INFO
